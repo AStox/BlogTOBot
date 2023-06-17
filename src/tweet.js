@@ -7,11 +7,8 @@ class Tweet {
   }
 
   async getTweetContent() {
-    //   const tweetUrl = process.argv[2]; // Get the tweet URL from the command line arguments
-    const tweetUrl = "https://twitter.com/blogTO/status/1669404405018554368";
-
     // Navigate to the tweet URL and wait until there are no more network connections for at least 500 ms.
-    await this.page.goto(tweetUrl, { waitUntil: "networkidle0" });
+    await this.page.goto(this.tweetUrl, { waitUntil: "networkidle0" });
 
     //   const pageContent = await this.page.content();
     //   console.log("Page content:", pageContent);
