@@ -1,5 +1,3 @@
-const puppeteer = require("puppeteer");
-
 class Link {
   constructor(page, linkUrl) {
     this.linkUrl = linkUrl;

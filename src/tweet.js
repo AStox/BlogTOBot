@@ -1,5 +1,3 @@
-const puppeteer = require("puppeteer");
-
 class Tweet {
   constructor(page, tweetUrl) {
     this.tweetUrl = tweetUrl;

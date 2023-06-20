@@ -15,10 +15,14 @@ async function generatorResponse(tweetContent, linkContent) {
   It purposefully withholds information to entice the reader to click on the link. 
   Following are the original tweet and the article it links to. 
   Please write a tweet in response that will give any other readers any key information that was left out of the original tweet.
+  Your response may not go over 280 characters as that is the limit on twitter.
+  The tweet should not sound like a blog post or like a journalist wrote it. It should sound like the average no name twitter user wrote it.
+  It should have no emotion in it whatsover. It should sound like you're just listing off facts.
+  ALWAYS include the location of the thing being talked about in the article.
   It's important to not repeat any information that was already in the original tweet.
   It's also important that your tweet doesn't have any call to actions like "click here" or "read more".
   The tweet should just read as if it were written by a regular person.
-  Try to keep it to one sentence unless absolutely necessary to use more.
+  you may only respond in a single sentence.
   If the article deals with a list of items, for example a top 10 list, be sure to include ALL items on the list.
   
   An example of what to do:
@@ -36,7 +40,8 @@ async function generatorResponse(tweetContent, linkContent) {
     Link Content: They liked all the tim hortons, the high rises, the path, and the parks.
     Reply: In a thread that has gone viral on Reddit, an American tourist detailed their key takeaways after visiting Toronto for a work trip, including the city's many high rises and its endless supply of Tim Hortons locations."
     Instead, you should reply with something like:
-    "In a thread that has gone viral on Reddit, an American tourist detailed their key takeaways after visiting Toronto for a work trip: The city's many high rises, its endless supply of Tim Hortons locations, the PATH, and all the parks."`;
+    "An American tourist listed their key takeaways after visiting Toronto for a work trip: The city's many high rises, its endless supply of Tim Hortons locations, the PATH, and all the parks."
+    Here, the issue is that the article contains a list, but you only included some items. When the article contains a list, you should include ALL items on the list in your reply.`;
 
   const prompt = `${details}\nTweet: "${tweetContent}"\nLink Content:"${linkContent}"\nReply:`;
   const completion = await openai.createCompletion({
