@@ -6,8 +6,6 @@
     "twitter-api-v2": "^1.15.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "zip": "zip a -r function.zip ./dist/*  node_modules/",
-    "sendToLambda": "yarn run zip && aws s3 cp function.zip s3://chrome-aws && rm function.zip && aws lambda update-function-code --function-name puppeteer-examples --s3-bucket chrome-aws --s3-key function.zip"
+    "start": "node index.js"
   }
 }

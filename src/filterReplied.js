@@ -35,11 +35,9 @@ async function checkReplied(page, tweetId) {
     const replyTexts = Array.from(replyElements).map((el) => el.innerText);
     return replyTexts;
   });
-  console.log(replies);
 
   // Check if any reply contains "@nomoreclickbait"
   const found = replies.some((reply) => reply.includes("@nomoreclickbait"));
-  console.log("Found:", found);
   return found;
 }
 

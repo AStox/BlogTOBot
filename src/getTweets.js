@@ -1,5 +1,3 @@
-const puppeteer = require("puppeteer");
-
 async function autoScroll(page) {
   await page.evaluate(async () => {
     return await new Promise((resolve, reject) => {
