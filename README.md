@@ -1,12 +1,15 @@
 # BlogTO Bot
 BlogTO Bot is a Twitter bot that reads blogTO's clickbaity tweets and replies with a short summary of the article.
 
+## Requirements
+You'll need your own OpenAI api key and free tier twitter API key.
+
 ## Setup
-Create a `.env` file from the `.env.example` and fill it with your OpenAI and Twitter keys.
-Run `yarn install` to install the dependencies.
+1. Create a `.env` file from the `.env.example`.
+2. `yarn install`
 
 ## Usage
-Run the bot with `yarn start`.
+`yarn start`
 
 ## Cron Job
 Currently the bot is set to run on a `*/30 * * * *` cron job, executing every 30 minutes.
