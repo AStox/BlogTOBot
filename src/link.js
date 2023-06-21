@@ -11,7 +11,7 @@ class Link {
     // Scrape the link content
     const linkContent = await this.page.evaluate(() => {
       // This code runs in the browser context
-      const linkElement = document.querySelector("div.article-detail-body");
+      const linkElement = document.querySelector("div.base-site-content");
 
       return linkElement.innerText;
     });

@@ -17,6 +17,7 @@ async function tweetReply(reply, tweetIdToReplyTo) {
     .catch((error) => {
       console.log(error);
     });
+  return tweet;
 }
 
 module.exports = tweetReply;
