@@ -4,7 +4,7 @@ const generateResponse = require("./src/responseGenerator.js");
 const getLatestTweets = require("./src/getTweets.js");
 const tweetReply = require("./src/tweetReply.js");
 const { saveId, findId } = require("./src/readWriteFile.js");
-import { logMessage } from "./src/logger.js";
+const { logMessage } = require("./src/logger.js");
 const puppeteer = require("puppeteer");
 
 async function run(event, context) {
@@ -23,10 +23,12 @@ async function run(event, context) {
 
     logMessage("Getting latest tweets...");
     const latestTweets = await getLatestTweets(page, 5);
-    logMessage("Latest tweets:", latestTweets);
+    logMessage("Latest tweets:");
+    logMessage(latestTweets);
     logMessage("Filtering replied tweets...");
     const filteredTweets = latestTweets.filter((tweetId) => !findId(tweetId));
-    logMessage("Filtered tweets:", filteredTweets);
+    logMessage("Filtered tweets:");
+    logMessage(filteredTweets);
 
     logMessage("Generating response...");
     for (const tweetId of filteredTweets) {
@@ -60,7 +62,7 @@ async function run(event, context) {
 
     await browser.close();
   } catch (error) {
-    console.error(error);
+    logMessage(error);
   }
 }
 
