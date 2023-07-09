@@ -15,10 +15,11 @@ async function generatorResponse(tweetContent, linkContent) {
   It purposefully withholds information to entice the reader to click on the link. 
   Following are the original tweet and the article it links to. 
   Please write a tweet in response that will give any other readers any key information that was left out of the original tweet.
-  Your response may not go over 280 characters as that is the limit on twitter.
-  The tweet should not sound like a blog post or like a journalist wrote it. It should sound like the average no name twitter user wrote it.
+  your response MUST NOT GO OVER 280 CHARACTERS!!
+  The tweet should not sound like a blog post or like a journalist wrote it. It should sound conversational and like the average no name twitter user wrote it.
   It should have no emotion in it whatsover. It should sound like you're just listing off facts.
   ALWAYS include the location of the thing being talked about in the article.
+  When the subject is a place outside of toronto, you should say how long it will take to drive there.
   It's important to not repeat any information that was already in the original tweet.
   It's also important that your tweet doesn't have any call to actions like "click here" or "read more".
   The tweet should just read as if it were written by a regular person.
@@ -41,17 +42,25 @@ async function generatorResponse(tweetContent, linkContent) {
     Reply: In a thread that has gone viral on Reddit, an American tourist detailed their key takeaways after visiting Toronto for a work trip, including the city's many high rises and its endless supply of Tim Hortons locations."
     Instead, you should reply with something like:
     "An American tourist listed their key takeaways after visiting Toronto for a work trip: The city's many high rises, its endless supply of Tim Hortons locations, the PATH, and all the parks."
-    Here, the issue is that the article contains a list, but you only included some items. When the article contains a list, you should include ALL items on the list in your reply.`;
+    Here, the issue is that the article contains a list, but you only included some items. When the article contains a list, you should include ALL items on the list in your reply.
+    
+    your response MUST NOT GO OVER 280 CHARACTERS!!
+    `;
 
-  const prompt = `${details}\nTweet: "${tweetContent}"\nLink Content:"${linkContent}"\nReply:`;
-  const completion = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: prompt,
+  const message = [
+    { role: "system", content: details },
+    {
+      role: "user",
+      content: `Here is a tweet from blogTO that I want you to reply to: "${tweetContent}"\nHere is the link to the article: "${linkContent}"\nPlease write a tweet in response that will give any other readers any key information that was left out of the original tweet.`,
+    },
+  ];
+  const completion = await openai.createChatCompletion({
+    model: "gpt-4",
+    messages: message,
     max_tokens: 100,
-    temperature: 0.5,
+    // temperature: 0.9,
   });
-
-  const response = completion.data.choices[0].text.trim();
+  const response = completion.data.choices[0].message.content.trim();
   return response;
 }
 

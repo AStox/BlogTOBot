@@ -22,10 +22,17 @@ async function autoScroll(page) {
 
 async function getLatestTweets(page, numOfTweets) {
   await page.goto("https://twitter.com/blogTO", { waitUntil: "networkidle0" });
+  await page.waitForTimeout(5000);
 
   let tweetUrlsSet = new Map();
   let scrollCount = 0;
   let maxScrolls = 10;
+
+  // log page content
+  const content = await page.content();
+  // console.log("Page content: ", content);
+  // take a screenshot of page
+  await page.screenshot({ path: "screenshot.png" });
 
   // Regular expression to match URLs
   const urlRegExp = /(http|https):\/\/[^\s]+/g;

@@ -12,7 +12,7 @@ async function tweetReply(reply, tweetIdToReplyTo) {
   const tweet = await client.v2
     .tweet(reply, { reply: { in_reply_to_tweet_id: tweetIdToReplyTo } })
     .then((tweet) => {
-      return `https://twitter.com/nomoreclickbait/status/${tweet.data.id}`;
+      return tweet;
     })
     .catch((error) => {
       console.log(error);
